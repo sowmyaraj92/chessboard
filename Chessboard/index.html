@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../Chessboard/style.css">
+</head>
+
+<body>
+    <div id="chessBoard"></div>
+    </div>
+</body>
+<script type=text/javascript>
+    var x = 8;
+    var y = 8;
+    var chessboard = document.getElementById("chessBoard");
+    for (var i = 0; i < y; i++) {
+        var row = chessboard.appendChild(document.createElement("div"));
+        for (var j = 0; j < x; j++) {
+            var column = document.createElement("span");
+
+            var color = ""
+            var c = (i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0)
+            if (c)
+                color = "class='black-class'"
+            else
+                color = "class='white-class'"
+
+            column.innerHTML = "<input " + color + " type ='button' id='span" + i + j + "' onClick='clicker(" + i + "," + j + ")'>";
+            var col = row.appendChild(column);
+        }
+    }
+
+    function clicker(i, j) {
+        var size = 8;
+
+        for (var x = 0; x < size; x++) {
+            for (var y = 0; y < size; y++) {
+                var spanID = 'span' + x + y;
+                document.getElementById(spanID).classList.remove('red-class');
+            }
+        }
+
+        for (var x = i, y = j; x < size && y < size; x++, y++) {
+            painter(x, y)
+        }
+
+        for (var x = i, y = j; x >= 0 && y >= 0; x--, y--) {
+            painter(x, y)
+        }
+
+        for (var x = i, y = j; x < size && y >= 0; x++, y--) {
+            painter(x, y)
+        }
+
+        for (var x = i, y = j; x >= 0 && y < size; x--, y++) {
+            painter(x, y)
+        }
+    }
+
+    function painter(x, y) {
+        var spanID = 'span' + x + y;
+        console.log(spanID);
+        document.getElementById(spanID).classList.add('red-class');
+    }
+</script>
+
+</html>

@@ -1,0 +1,26 @@
+#chessBoard {
+    display: inline-block;
+    border: 2px outset black;
+}
+
+#chessBoard div {
+    line-height: 1px;
+}
+
+#chessBoard input {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+}
+
+.white-class {
+    background-color: snow;
+}
+
+.black-class {
+    background-color: black;
+}
+
+.red-class {
+    background-color: red;
+}
